@@ -45,26 +45,31 @@ def setup_paths(date_str, specific_dates):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
+    # Load the most recent dataset
+    current_df = pd.DataFrame()
     try:
-        # Load the most recent dataset
         current_df = pd.read_csv(input_file_path, sep=";")
-        logging.info(f"Loaded data for date: {date_str}")
+        logging.info(f"Loaded data from {input_file_name} - shape {current_df.shape} to current_df")
     except Exception as e:
-        logging.error(f"Error loading current data: {e}")
+        logging.error(f"Error loading current data from {input_file_name}: {e}")
         return None, None, None
 
     # Combine datasets based on specific dates
     combined_df = pd.DataFrame()
     formatted_specific_dates = [datetime.strptime(date, "%d-%m-%Y").strftime("%d_%m_%Y") for date in specific_dates]
     for file in os.listdir(data_folder):
-        file_date = file.split("_")[-1].split(".")[0]  # Extract date part from file name
+        file_date = file.split("_")[-1].replace('.csv', '')  # Extract date part from file name
         if file_date in formatted_specific_dates:
+            file_path = os.path.join(data_folder, file)
             try:
-                df = pd.read_csv(os.path.join(data_folder, file), sep=";")
+                df = pd.read_csv(file_path, sep=";")
                 combined_df = pd.concat([combined_df, df], ignore_index=True)
-                logging.info(f"Data from {file} added to combined dataset")
+                logging.info(f"Appending data from {file} - shape {df.shape} to combined_df")
             except Exception as e:
                 logging.error(f"Error processing file {file}: {e}")
+
+    logging.info(f"Combined_df final shape: {combined_df.shape}")
+    logging.info(f"Current_df final shape: {current_df.shape}")
 
     return current_df, combined_df, output_folder
 
@@ -73,4 +78,3 @@ date_str = "07-05-2024"
 specific_dates = ["23-04-2024", "30-04-2024", "07-05-2024"]  # Example dates for inclusion
 
 current_df, combined_df, output_path = setup_paths(date_str, specific_dates)
-
