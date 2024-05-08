@@ -87,3 +87,13 @@ def setup_paths(date_str, specific_dates):
     logging.info(f"Combined DataFrame shape after duplicates preprocessing: {combined_df.shape}")
 
     return current_df, combined_df, output_path
+
+
+
+# Setup paths and load data
+date_str = "25-04-2024"
+specific_dates = ["08-03-2024", "15-03-2024", "22-03-2024", "29-03-2024", "02-04-2024", "05-04-2024",
+                  "08-04-2024", "11-04-2024", "15-04-2024",  "18-04-2024", "22-04-2024", "25-04-2024"]
+
+
+current_df, combined_df, output_path = setup_paths(date_str, specific_dates)
