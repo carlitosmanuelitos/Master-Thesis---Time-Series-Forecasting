@@ -23,7 +23,6 @@ There is also a logic of an output folder that should be maintained.
 Can you adapt the following code?
 
 ############ __________________________________________________________
-
 import os
 import logging
 import pandas as pd
@@ -49,6 +48,7 @@ def setup_paths(date_str, specific_dates):
     current_df = pd.DataFrame()
     try:
         current_df = pd.read_csv(input_file_path, sep=";")
+        current_df['Extraction Date'] = datetime.strptime(formatted_date_str, "%d_%m_%Y")
         logging.info(f"Loaded data from {input_file_name} - shape {current_df.shape} to current_df")
     except Exception as e:
         logging.error(f"Error loading current data from {input_file_name}: {e}")
@@ -63,6 +63,7 @@ def setup_paths(date_str, specific_dates):
             file_path = os.path.join(data_folder, file)
             try:
                 df = pd.read_csv(file_path, sep=";")
+                df['Extraction Date'] = datetime.strptime(file_date, "%d_%m_%Y")
                 combined_df = pd.concat([combined_df, df], ignore_index=True)
                 logging.info(f"Appending data from {file} - shape {df.shape} to combined_df")
             except Exception as e:
