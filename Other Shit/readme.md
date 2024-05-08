@@ -22,78 +22,55 @@ There is also a logic of an output folder that should be maintained.
 
 Can you adapt the following code?
 
+############ __________________________________________________________
+
 import os
-import warnings
 import logging
 import pandas as pd
-import numpy as np
 from datetime import datetime
-import seaborn as sns
-import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
-from IPython.display import display, HTML
 
-
-warnings.simplefilter(action="ignore")
+# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def setup_paths(date_str, specific_dates):
-    data_folder = "Visualization/Data/Orders/"
+    data_folder = "Data/Schema/"
     output_folder_base = "Visualization/Graphs Schema/Schema/"
     
-    input_file_name = f"Schema_DB_{date_str}.csv"
+    # Format the date string for file path
+    formatted_date_str = datetime.strptime(date_str, "%d-%m-%Y").strftime("%d_%m_%Y")
+    input_file_name = f"Schema_DB_{formatted_date_str}.csv"
     output_folder = os.path.join(output_folder_base, date_str)
     input_file_path = os.path.join(data_folder, input_file_name)
-    output_path = os.path.join(output_folder)
     
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    current_df = None
     try:
+        # Load the most recent dataset
         current_df = pd.read_csv(input_file_path, sep=";")
-        logging.info(f"Input file path for current visualization: {input_file_path}")
-        logging.info(f"Output path for current visualization: {output_path}")
-        logging.info(f"Current DataFrame shape before duplicates preprocessing: {current_df.shape}")
-        
-        # Preprocessing on current_df
-        current_df['UPDATE DATE'] = pd.to_datetime(current_df['UPDATE DATE'].str.split().str[0], format='%d/%m/%Y', errors='coerce')
-        current_df.dropna(subset=['UPDATE DATE'], inplace=True)
-        current_df.sort_values('UPDATE DATE', inplace=True)
-        current_df.drop_duplicates(subset='ORDER CODE', keep='last', inplace=True)
-        logging.info(f"Current DataFrame shape after duplicates preprocessing: {current_df.shape}")
+        logging.info(f"Loaded data for date: {date_str}")
     except Exception as e:
-        logging.error(f"Error processing current data: {e}")
+        logging.error(f"Error loading current data: {e}")
         return None, None, None
 
-    total_rows_before = 0
+    # Combine datasets based on specific dates
     combined_df = pd.DataFrame()
-    specific_dates_dt = pd.to_datetime(specific_dates, format="%d-%m-%Y")
-
+    formatted_specific_dates = [datetime.strptime(date, "%d-%m-%Y").strftime("%d_%m_%Y") for date in specific_dates]
     for file in os.listdir(data_folder):
-        if file.endswith(".csv") and pd.to_datetime(file.split("_")[-1].split('.')[0], format="%d-%m-%Y") in specific_dates_dt:
+        file_date = file.split("_")[-1].split(".")[0]  # Extract date part from file name
+        if file_date in formatted_specific_dates:
             try:
                 df = pd.read_csv(os.path.join(data_folder, file), sep=";")
-                total_rows_before += df.shape[0]
-                df['UPDATE DATE'] = pd.to_datetime(df['UPDATE DATE'].str.split().str[0], format='%d/%m/%Y', errors='coerce')
-                df.dropna(subset=['UPDATE DATE'], inplace=True)
-                df.sort_values('UPDATE DATE', inplace=True)
-                df.drop_duplicates(subset='ORDER CODE', keep='last', inplace=True)
                 combined_df = pd.concat([combined_df, df], ignore_index=True)
+                logging.info(f"Data from {file} added to combined dataset")
             except Exception as e:
                 logging.error(f"Error processing file {file}: {e}")
 
-    logging.info(f"Combined DataFrame shape before duplicates preprocessing: ({total_rows_before}, {combined_df.shape[1]})")
-    logging.info(f"Combined DataFrame shape after duplicates preprocessing: {combined_df.shape}")
+    return current_df, combined_df, output_folder
 
-    return current_df, combined_df, output_path
-
-
-
-# Setup paths and load data
-date_str = "25-04-2024"
-specific_dates = ["08-03-2024", "15-03-2024", "22-03-2024", "29-03-2024", "02-04-2024", "05-04-2024",
-                  "08-04-2024", "11-04-2024", "15-04-2024",  "18-04-2024", "22-04-2024", "25-04-2024"]
-
+# Parameters
+date_str = "07-05-2024"
+specific_dates = ["23-04-2024", "30-04-2024", "07-05-2024"]  # Example dates for inclusion
 
 current_df, combined_df, output_path = setup_paths(date_str, specific_dates)
+
