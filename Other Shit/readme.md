@@ -1,83 +1,61 @@
-Type	Data deliverable	Awareness (yes/no)	Value (1- not useful, 2 - neutral, 3 - useful	Comments
-Order Orch	Data Impact Assessment	Y	1	not used regularly
-Order Orch	Data Lineage	N	2	Useful if reliable and more user friendly
-Order Orch	Data Models (Logical, Physical & Mapping)	N	3	Useful for someone who is new and needs onboarding
-Order Orch	Data Ownership Matrix	N	3	useful if up to date, especially with people changing jobs
-Order Orch	Data Quality Index	N	3	
-Order Orch	Data Reconcialtion	N	3	Product team needs to get access to the dashboard, the roles were already shared
-Order Orch	Data Remediation	Y	3	Process well known and appreciated. Commerce team is Top 1 of all teams raising tickets.
-Order Orch	Data Validation Rules & Data Quality	N	3	"Needs to be kept up to date
+### Data Impact Assessment
+- **Awareness & Usage**: High awareness across all teams but deemed low value, indicating it's not regularly used or considered relevant to daily operations across teams.
+- **Insight**: The deliverable is perceived as non-essential except for specific situations. This might call for a reevaluation of its application or a re-adjustments to align better with business needs.
 
-Ownership with the data team (if available)"
-Order Orch	Definitions of Done within User Story	N	2	not using
-Order Orch	Integration Data Mapping Repository	N	3	Looks useful but needs publicizing
-Order Orch	PII Data	N	1	not something we would use
-Order Orch	Reference data in Confluence	Y	3	Just one list used on a regular basis
-Order Orch	Solution Data Architecture	Y	3	use on a day to day basis
-F2F	Reference data in Confluence	Y	3	Not applicable to DCX 
-F2F	Integration Data Mapping Repository	Y	3	Won't work in DCX WoW
-F2F	Data Models (Logical, Physical & Mapping)	Y	NA	Specifically for DA and target systems
-F2F	Data Validation Rules & Data Quality	Y/N	3	Not up to date
-F2F	Data Lineage 	Y	3	Challenge to maintain it and keep up to date
-F2F				How to fit the tool into day to day work
-F2F	PII Data	Y/N	3	Several sources for PII data
-F2F	Data Ownership Matrix	Y	3	Needed to show clear capability ownership in DCX,
-F2F				not the page in Confluence
-F2F				would be good to add the methods of accessing the data
-F2F				there needs to be an understanding from the business of data which is available to them
-F2F	Solution Data Architecture	N	1	Should be in LeanIX
-F2F	Data Impact Assessment	Y	1	Not relevant to the line of work
-F2F				Not the priority as per current prioritisation 
-F2F	Definitions of Done within User Story	Y	1	Do not help the quality of solution,
-F2F				easily to manipulate,
-F2F				too cumbersome,
-F2F				no check whether the work was done 
-F2F				make them easier, anyone can sign them off, it needs to be someone who is a specialist in the area
-F2F	Data Reconciliation	Y	2	The current process is designed for the DCE2, for the DCX we should improve it. 
-F2F	Data Remediation	Y	2	When DCX product will be responsible for their own DQ, it should be improved. 
-F2F	Data Quality Index	N	2	Current design and implementation not really design for DCX, required improvements. 
-CIAM	Reference data in Confluence	Y	3	Lack of consistency between the systems led to P1s
-CIAM	Integration Data Mapping Repository	N	NA	Updated manually
-CIAM				A lot of effort to maintain and keep up to date
-CIAM				Products themselves should manage this information
-CIAM				The management should be automated to avoid manual intervention
-CIAM	Data Models (Logical, Physical & Mapping)	Y	3	This can be enriched with more information, e.g. definition, or actions related to specific fields
-CIAM				Limit manual work involved in the update
-CIAM	Data Validation Rules & Data Quality	Y	1	The information per market would be useful, not in the current global form
-CIAM				Not on Confluence, it should be available in the Back Office, easily extractable 
-CIAM				Product Teams should manage that 
-CIAM	Data Lineage 	Y	1	Product Teams are aware of it but not aware of how it can be useful to them
-CIAM				Lack of ownership in terms of updates to the system, is it automatic
-CIAM				Not user friendly, too much information looks squashed
-CIAM				Potentially useful if the current problems are resolved
-CIAM	PII Data	N	1	Might be useful for compliance reasons if not manual and up to date
-CIAM	Data Ownership Matrix	N	1	
-CIAM	Solution Data Architecture	Y	2	Product team should own it
-CIAM				Duplicate effort with regards to this Confluence page and LeanIX
-CIAM	Data Impact Assessment	Y	2	At present it is needed on case by case basis
-CIAM				In future it may need to be eliminated by upgrading our DM practices 
-CIAM	Definitions of Done within User Story	Y	2 (3 in the new form)	Data element should stay within DoDs but should be made leaner 
+### Data Lineage
+- **Awareness & Usage**: Recognized for its potential value but is held back by maintenance issues (not being up to date, or incomplete data being present) and lack of user-friendliness. 
+- **Insight**: Improving the tool’s integration into product workflows and enhancing its user interface could increase its usage and reliability. This could possibly be tackled by the new Atlan integration, but still early to discuss) Review Atlan migration in below confluence link:
+
+### Data Models (Logical, Physical & Mapping)
+- **Awareness & Usage**: Valued for onboarding new team members and specific products applications but needs enrichment and less manual maintenance. 
+- **Insight**: Automating updates and improvimg content detail could make these models more useful and reduce the workload. Difficulty in automating and generating without manual up keep.
+
+### Data Ownership Matrix
+- **Awareness & Usage**: Seen as crucial across product teams for maintaining data integrity, especially with frequent job changes, but lacks consistent updates and clear access methods. Information present is not up-to date. 
+- **Insight**: Establishing clearer guidelines for data ownership and ensuring regular audits & updates are scheduled could enhance the utility of this matrix.
+
+### Integration Data Mapping Repository
+- **Awareness & Usage**: Valuable but needs to be divulged and better integrate into workflows, with a high need for automation to reduce manual effort into keeping information stored up to date.
+- **Insight**: Automating the repository management and enhancing visibility could increase its effectiveness and adoption. Simplifying the interface for better segmentation across systems integration would also be beneficial. 
+
+
+### PII Data
+- **Awareness & Usage**: Recognized for compliance importance but challenged by manual updates and multiplicity of sources. Information not up to date. Not revelant across all product teams.
+- **Insight**: Streamlining sources and automating updates could ensure compliance and reduce the burden.
+
+
+### Reference Data in Confluence
+- **Awareness & Usage**: Highly valued across all segments, indicating its positive impact in daily operations. Not applicable to DCX.
+- **Insight**: Streamlining its use and addressing inconsistencies between systems could improve operational efficiency and effectiveness. Making sure that the data is consistent and updated could help different product needs.
+
+### Data Remediation
+- **Awareness & Usage**: Recognized across Order Orch and F2F as valuable, with no application in CIAM. Well-appreciated and important for ensuring data quality.
+- **Insight**: As DCX roles expand, there will be a need for continued improvements to maintain standards. Emphasizing regular updates and exploring automation could sustain high data quality standards.
+
+### Solution Data Architecture
+- **Awareness & Usage**: Critical in daily operations for Order Orch and CIAM, less so for F2F where it's underutilized.
+- **Insight**: Reducing duplicate efforts and enhancing solution ownership could improve efficiency and relevance, especially in markets where it's currently underutilized. Clarifying roles and responsibilities within the solution architecture team could address the current inefficiencies.
+
+
+### Data Quality Index
+- **Awareness & Usage**: Not optimally designed for all product teams, different standards to be applied across different products.
+- **Insight**: There's a need for improvements specifically tailored to DCX to enhance effectiveness and overall adoption. Streamlining and updating the current design to better meet the specific requirements of different teams.
+
+
+### Data Reconciliation
+- **Awareness & Usage**: Acknowledged by with moderate value. This points to varying needs and the importance of customizing the process to fit different operational frameworks.
+- **Insight**: Enhancing access for product teams and adapting the process for DCX could provide significant benefits. A review and redesign to make it more adaptable and relevant to all teams, especially DCX, are recommended.
+
+
+### Data Validation Rules
+- **Awareness & Usage**: Recognized importance. These to be current and more closely managed by data teams with concurrent audits for keeping rules updated.
+- **Insight**: Ensuring these rules are up-to-date, easily extractable, and managed by data teams with alignment with product teams. Regular revisions to ensure consistency and accuracy.
 
 
 
 
-Other comments:
-Data requirements should come from the business
-Other comments:
-costly maintenance
-ownership has to be shifted to Products
-automated process
-there needs to be a transition period between DCE2 WoW and the new PBO
-Other comments:
-trust in the Data Team in this respect
-Would like to see more synergy between Product and Data teams
-Relying on SDA pages but DIA pages not used 
-
-https://dataladder.com/8-principles-of-data-management/
-https://library.si.edu/sites/default/files/pdf/rdm_best_practices.pdf
-https://dce-confluence.app.pconnect.biz/display/CCITDOMARC/Data+Standards+Compliance+-+self-assessment+for+Consumer+IT
-
-
-
-
-
+### Additional Insights
+- **Automation**: There is a crucial need for automating processes wherever possible to enhance efficiency and reduce manual workload.
+- **Auditing**: Regular audits are essential to ensure that data remains up to standard and meets compliance and business needs.
+- **Business Alignment**: There's a need for data requirements to be driven more by business demands rather than IT provisions.
+- **Team Alignment**: There needs to be better alignment between the data team & product teams to ensure that data strategies and processes support operational needs effectively.
