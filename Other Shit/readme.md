@@ -59,3 +59,20 @@
 - **Auditing**: Regular audits are essential to ensure that data remains up to standard and meets compliance and business needs.
 - **Business Alignment**: There's a need for data requirements to be driven more by business demands rather than IT provisions.
 - **Team Alignment**: There needs to be better alignment between the data team & product teams to ensure that data strategies and processes support operational needs effectively.
+
+
+
+
+https://dataladder.com/8-principles-of-data-management/
+https://library.si.edu/sites/default/files/pdf/rdm_best_practices.pdf
+
+| Policy/Standard | Scope/Name | Assessment Topic | Evidence of Compliance | Self-Assessment Notes | Next Steps/JIRA Reference |
+|-----------------|------------|------------------|------------------------|-----------------------|---------------------------|
+| IT-STD-401      | Metadata Management | Data Owner and Data Steward roles, data scope review, metadata management tools usage | Data Owner/Steward listed on SDA, DIA, MDM matrix; CONSGOV contains information; Data Dictionary/Catalog in place | Regular review/update by Data Owner/Steward and IT; Data Models designed/documented | - |
+| IT-STD-402      | Data Confidentiality | Define data confidentiality category, implement controls, data classification and logging | Data criticality defined with capability owner and data owner; Data recovery procedures shared | SLAs agreed with data owners per data confidentiality level | - |
+| IT-STD-403      | Data Lifecycle Management | Data domain lifecycle definition, data quality assessment, data security mechanisms | CRUD matrix/document signed off by data owner; InfoSec validated security review | Regular data quality assessment; Security review at each solution in scope | - |
+| IT-STD-404      | Data Archival, Retention, Disposal | Data Retention period enforcement, Data Archival and Disposal process definition | Proof/evidence of process definition and implementation; Link to audit trail capabilities | Exceptions validated as per IT Risk Management Standard | - |
+| IT-STD-405      | Data Quality | Solution Data Architectures documentation, data quality controls and rules | SDA documentation uploaded in Confluence; DQ requirements/control validated with Data Owner/Steward | Data quality rules published and maintained; Critical data assets have DQ rules defined | - |
+| IT-STD-406      | Master Data Management and Standardisation | Master data maintenance, MDM authoritative source, As-is To-be analysis | Link to Distributed MDM guidelines; CRUD, SDA for data domain | Periodical quality reviews; Compliance with quality monitoring requirements | - |
+| IT-STD-407      | Data Modelling and Architecture | Physical data models for critical data, consistency with solution implementation | Link to PMI PDM; Physical data models describe data structures, relationships, and cardinalities | Data Lineage documentation; Data flows documented at column level | - |
+| IT-STD-408      | Data Handling | Data sharing requests logging and approval, security requirements implementation | Link to CONSGOV or JIRA US; Proof/evidence of Legal review and NDA | Data flows for shared data documented; Official Authoritative Sources for data sharing | - |
