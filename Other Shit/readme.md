@@ -76,3 +76,38 @@ https://library.si.edu/sites/default/files/pdf/rdm_best_practices.pdf
 | IT-STD-406      | Master Data Management and Standardisation | Master data maintenance, MDM authoritative source, As-is To-be analysis | Link to Distributed MDM guidelines; CRUD, SDA for data domain | Periodical quality reviews; Compliance with quality monitoring requirements | - |
 | IT-STD-407      | Data Modelling and Architecture | Physical data models for critical data, consistency with solution implementation | Link to PMI PDM; Physical data models describe data structures, relationships, and cardinalities | Data Lineage documentation; Data flows documented at column level | - |
 | IT-STD-408      | Data Handling | Data sharing requests logging and approval, security requirements implementation | Link to CONSGOV or JIRA US; Proof/evidence of Legal review and NDA | Data flows for shared data documented; Official Authoritative Sources for data sharing | - |
+
+
+
+
+| Acronym | Full Form | Additional Information |
+|---------|-----------|-----------------------|
+| DAM | Digital Asset Management | - |
+| AEM | Adobe Experience Manager | - |
+| - | - | Twillio |
+| PSP | Payment Service Provider | - |
+| BVC | Bazaar Voice | - |
+| LSP / FSP / Arvato | - | - |
+| PIM | Product Information Manager | PIM (Hybris) |
+| HYB | Commerce | Commerce (Hybris) |
+| GYA | Gigya | - |
+| CDP | Customer Data Platform | Treasure Data - CDP |
+| ADL | Treasure data - Active Data Layer | - |
+| CCR | SFDC Service Cloud | CCR (SFDC) / SFSC / Customer Care |
+| SMC | SFMC Marketing Cloud | Marketing Cloud (SFMC) |
+| BIN | Business Intelligence | BI |
+| SPR | Sprinklr | - |
+| SPH | SFDC Physical Locations | SFDC - Physical Locations (Store Locator) |
+| CLT | Clientelling | SFDC - FSL - Clientelling - Ce-App |
+| CEG | Cegid | CEGID (POS) |
+| CMS | Content Management System | CMS (Adobe Experience Manager) |
+| DMS | Device Management | Device Microservice |
+| AVE | Age Verification Service | Age Verification  (AWS Aurora) |
+| DMP | DMP | - |
+| SUB | Subscription | Subscription (Zuora) |
+| QUD | Qudini | Appointment (Qudini) |
+| - | - | IPSOS (Market Research) |
+| - | - | Qualitrics |
+| SMS | Stock Micro Service | - |
+| SFDC DTE | SFDC Digital Trade Engagement (DTE) | - |
+
