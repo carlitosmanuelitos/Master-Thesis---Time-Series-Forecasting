@@ -59,9 +59,9 @@ FROM {Order AS o
     AND {pb:guid} = SUBSTRING({oe:discountvaluesinternal}, 6, 44)
 }
 WHERE {o:originalVersion} IS NULL
-AND {o:versionID} is NULL
+AND {o:versionID} IS NULL
 AND {o:status} NOT IN ('8796125691995')
-AND {country:isocode}='DE'
+AND {country:isocode} = 'DE'
 AND {o:creationTime} BETWEEN '2024-04-10 00:00:00' AND '2024-04-10 23:59:59'
 GROUP BY
     {o:code},
@@ -119,36 +119,38 @@ LEFT JOIN OrderReason AS or ON {o:OrderReason} = {or:pk}
 JOIN PromotionResult AS pr ON {pr:order} = {o:pk}
 JOIN RuleBasedPromotion AS rbp ON {pr:promotion} = {rbp:pk}}
 WHERE {o:originalVersion} IS NULL
-AND {o:versionID} is NULL
+AND {o:versionID} IS NULL
 AND {o:status} NOT IN ('8796125691995')
-AND {country:isocode}='DE'
+AND {country:isocode} = 'DE'
 AND {o:creationTime} BETWEEN '2024-04-10 00:00:00' AND '2024-04-10 23:59:59'
-AND NOT EXISTS ({{
-                   SELECT {pb2:pk}
-                      from {RuleBasedOrderEntryAdjustAction AS pb2 JOIN PromotionResult AS pr ON {pb2:promotionresult} = {pr:pk}
-                                JOIN Order AS o2 ON {pr:order} = {o2:pk}
-                              JOIN Orderentry AS oe2 ON {oe2:order} = {o2:pk}
-                              }
-                      WHERE  {pb2:promotionresult} = {pr:pk}
-                        AND {pb2:orderentryproduct} = {oe2:product}
-                        AND {pb2:orderentrynumber} = {oe2:entrynumber}
-                        AND {pb2:markedapplied} = 1
-                        AND {pb2:guid} =  SUBSTRING({oe:discountvaluesinternal}, 6, 44)
-                        AND {oe2:pk} = {oe:pk} 
-                        AND {o2:pk} = {o:pk}
-               AND {o:creationTime} BETWEEN '2024-04-10 00:00:00' AND '2024-04-10 23:59:59'
-                    }})
-AND NOT EXISTS ({{
-                   SELECT {pb2:pk}
-                      from {RuleBasedOrderAdjustTotalAction AS pb2 JOIN PromotionResult AS pr ON {pb2:promotionresult} = {pr:pk}
-                                JOIN Order AS o2 ON {pr:order} = {o2:pk}
-                              }
-                      WHERE  {pb2:promotionresult} = {pr:pk}
-                        AND {pb2:markedapplied} = 1
-                        AND {pb2:guid} =  SUBSTRING({oe:discountvaluesinternal}, 6, 44)
-                        AND {o2:pk} = {o:pk}
-                AND {o:creationTime} BETWEEN '2024-04-10 00:00:00' AND '2024-04-10 23:59:59'
-                    }})
+AND NOT EXISTS (
+    {{
+    SELECT {pb2:pk}
+    FROM {RuleBasedOrderEntryAdjustAction AS pb2
+    JOIN PromotionResult AS pr2 ON {pb2:promotionresult} = {pr2:pk}
+    JOIN Order AS o2 ON {pr2:order} = {o2:pk}
+    JOIN Orderentry AS oe2 ON {oe2:order} = {o2:pk}}
+    WHERE {pb2:promotionresult} = {pr:pk}
+    AND {pb2:orderentryproduct} = {oe2:product}
+    AND {pb2:orderentrynumber} = {oe2:entrynumber}
+    AND {pb2:markedapplied} = 1
+    AND {pb2:guid} = SUBSTRING({oe:discountvaluesinternal}, 6, 44)
+    AND {oe2:pk} = {oe:pk}
+    AND {o2:pk} = {o:pk}
+    AND {o2:creationTime} BETWEEN '2024-04-10 00:00:00' AND '2024-04-10 23:59:59'
+    }})
+AND NOT EXISTS (
+    {{
+    SELECT {pb2:pk}
+    FROM {RuleBasedOrderAdjustTotalAction AS pb2
+    JOIN PromotionResult AS pr2 ON {pb2:promotionresult} = {pr2:pk}
+    JOIN Order AS o2 ON {pr2:order} = {o2:pk}}
+    WHERE {pb2:promotionresult} = {pr:pk}
+    AND {pb2:markedapplied} = 1
+    AND {pb2:guid} = SUBSTRING({oe:discountvaluesinternal}, 6, 44)
+    AND {o2:pk} = {o:pk}
+    AND {o2:creationTime} BETWEEN '2024-04-10 00:00:00' AND '2024-04-10 23:59:59'
+    }})
 GROUP BY
     {o:code},
     {o:totalprice},
