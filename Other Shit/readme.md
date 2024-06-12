@@ -49,3 +49,8 @@ GROUP BY
 ORDER BY 
     CONVERT(char(7), {o:creationTime}, 126), 
     {ct.code};
+
+
+
+Exception message: missing '}' for '{' at 989 in '{Order AS o LEFT JOIN BaseStore AS store ON {o:store}={store:pk} JOIN Country AS country ON {store:country} = {country:pk} LEFT JOIN PmiOrderStatus AS pmist ON {pmist:pk}={o:pmiOrderStatus} LEFT JOIN OrderChannel AS oc ON {o:orderChannel} = {oc:pk} LEFT JOIN OrderType AS ot ON {o:orderType}={ot.pk} LEFT JOIN OrderEntry AS oe ON {oe:order}={o:pk} LEFT JOIN Product AS prd ON {oe:product}={prd:pk} LEFT JOIN Category AS ct on {prd.defaultCategory} = {ct.pk} LEFT JOIN ( SELECT {o:pk} as order_pk, MAX({o.totalprice}) as total_order_price FROM {Order AS o LEFT JOIN BaseStore AS store ON {o:store}={store:pk} JOIN Country AS country ON {store:country} = {country:pk} LEFT JOIN PmiOrderStatus AS pmist ON {pmist:pk}={o:pmiOrderStatus} LEFT JOIN OrderChannel AS oc ON {o:orderChannel} = {oc:pk} LEFT JOIN OrderType AS ot ON {o:orderType}={ot.pk} }'
+
